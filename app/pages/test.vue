@@ -12,6 +12,7 @@ const { data, pending, error } = await useFetch('http://127.0.0.1:8000/api/data'
       <div v-if="pending">
         Sedang memuat data dari Python...
       </div>
+      
       <div v-else-if="data">
         <p class="text-green-500 font-medium">{{ data.message }}</p>
         <UBadge color="primary">{{ data.status }}</UBadge>

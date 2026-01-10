@@ -231,6 +231,13 @@ const data = ref<Payment[]>([
     status: 'paid',
     email: 'ethan.harris@example.com',
     amount: 639
+  },
+  {
+    id: '4596',
+    date: '2024-03-10T15:55:00',
+    status: 'paid',
+    email: 'ethan.harris@example.com',
+    amount: 639
   }
 ])
 
