@@ -1,0 +1,36 @@
+{
+  "name": "my-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck",
+    "python": "python3 /Users/robin/Documents/00Code/1st/ProjectOne/login.py",
+    "signup": "python3 /Users/robin/Documents/00Code/1st/ProjectOne/signup.py",
+    "all": "concurrently \"npm run dev\" \"npm run python\" \"npm run signup\""
+  },
+  "dependencies": {
+    "@iconify-json/lucide": "^1.2.82",
+    "@iconify-json/simple-icons": "^1.2.63",
+    "@nuxt/ui": "^4.3.0",
+    "@unovis/ts": "^1.6.2",
+    "@unovis/vue": "^1.6.2",
+    "@vueuse/core": "^14.1.0",
+    "nuxt": "^4.2.2",
+    "random": "^5.4.1",
+    "random-int": "^3.1.0",
+    "zod": "^4.3.4"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.12.1",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3",
+    "vue-tsc": "^3.2.1"
+  },
+  "packageManager": "pnpm@10.26.1"
+}
