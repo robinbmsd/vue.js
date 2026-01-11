@@ -10,7 +10,7 @@ const UDropdownMenu = resolveComponent('UDropdownMenu')
 const table = useTemplateRef('table')
 
 definePageMeta({
-    layout: 'dashboard'
+  layout: 'dashboard'
 })
 
 type Payment = {
@@ -301,11 +301,11 @@ function getHeader(column: Column<Payment>, label: string) {
   return h(
     UDropdownMenu,
     {
-      content: {
+      'content': {
         align: 'start'
       },
       'aria-label': 'Actions dropdown',
-      items: [
+      'items': [
         {
           label: 'Asc',
           type: 'checkbox',
@@ -336,15 +336,15 @@ function getHeader(column: Column<Payment>, label: string) {
     },
     () =>
       h(UButton, {
-        color: 'neutral',
-        variant: 'ghost',
+        'color': 'neutral',
+        'variant': 'ghost',
         label,
-        icon: isSorted
+        'icon': isSorted
           ? isSorted === 'asc'
             ? 'i-lucide-arrow-up-narrow-wide'
             : 'i-lucide-arrow-down-wide-narrow'
           : 'i-lucide-arrow-up-down',
-        class: '-mx-2.5 data-[state=open]:bg-elevated',
+        'class': '-mx-2.5 data-[state=open]:bg-elevated',
         'aria-label': `Sort by ${isSorted === 'asc' ? 'descending' : 'ascending'}`
       })
   )
@@ -366,7 +366,11 @@ const pagination = ref({
 <template>
   <div class="flex flex-col flex-1 w-full">
     <div class="flex px-4 py-3.5 border-b border-accented">
-      <UInput v-model="globalFilter" class="max-w-sm" placeholder="Filter..." />
+      <UInput
+        v-model="globalFilter"
+        class="max-w-sm"
+        placeholder="Filter..."
+      />
     </div>
 
     <UTable
@@ -379,10 +383,10 @@ const pagination = ref({
       :pagination-options="{
         getPaginationRowModel: getPaginationRowModel()
       }"
-    
+
       class="flex-1"
     />
-        <div class="flex justify-end border-t border-default pt-4 px-4">
+    <div class="flex justify-end border-t border-default pt-4 px-4">
       <UPagination
         :page="(table?.tableApi?.getState().pagination.pageIndex || 0) + 1"
         :items-per-page="table?.tableApi?.getState().pagination.pageSize"

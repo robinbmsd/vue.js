@@ -1,11 +1,11 @@
 <script setup lang="ts">
 definePageMeta({
-    layout: 'dashboard'
+  layout: 'dashboard'
 })
 </script>
 
 <template>
-    <div class="p-8">
+  <div class="p-8">
     <p>ini halaman testing</p>
-    </div>
+  </div>
 </template>

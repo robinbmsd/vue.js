@@ -3,5 +3,5 @@ navigateTo('/login')
 </script>
 
 <template>
-  <div></div>
+  <div />
 </template>
