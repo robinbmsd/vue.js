@@ -9,9 +9,9 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "typecheck": "nuxt typecheck",
-    "python": "python3 /Users/robin/Documents/00Code/1st/ProjectOne/login.py",
+    "login": "python3 /Users/robin/Documents/00Code/1st/ProjectOne/login.py",
     "signup": "python3 /Users/robin/Documents/00Code/1st/ProjectOne/signup.py",
-    "all": "concurrently \"npm run dev\" \"npm run python\" \"npm run signup\""
+    "all": "concurrently \"npm run dev\" \"npm run login\" \"npm run signup\""
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.82",
