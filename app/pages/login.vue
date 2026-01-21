@@ -83,6 +83,7 @@ async function onSubmit(_event: FormSubmitEvent<Schema>) {
             v-model="state.email"
             icon="i-heroicons-envelope"
             placeholder="email@contoh.com"
+            class="w-full"
           />
         </UFormField>
 
@@ -95,6 +96,7 @@ async function onSubmit(_event: FormSubmitEvent<Schema>) {
             type="password"
             icon="i-heroicons-lock-closed"
             placeholder="********"
+            class="w-full"
           />
         </UFormField>
 

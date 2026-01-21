@@ -5,9 +5,33 @@ const route = useRoute()
 const router = useRouter()
 const toast = useToast()
 
-const pageTitle = computed(() => {
+const items: NavigationMenuItem[] = [
+  {
+    label: 'Home',
+    icon: 'i-lucide-house',
+    to: 'home',
+    active: false
+  },
+  {
+    label: 'Transaction History',
+    icon: 'i-lucide-clipboard-clock',
+    to: 'transaction_history',
+    active: false
+  }
+]
+
+const pageTitle = computed((): string => {
+  if (route.meta.title) {
+    return route.meta.title as string
+  }
+  
   const name = route.name || 'Dashboard'
-  return name.toString().charAt(0).toUpperCase() + name.toString().slice(1)
+  return name.toString().replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+})
+
+const pageIcon = computed(() => {
+  const activeItem = items.find(item => item.to === route.name)
+  return activeItem ? activeItem.icon : 'i-lucide-box' 
 })
 
 const onLogout = async () => {
@@ -28,28 +52,13 @@ const onLogout = async () => {
 
     router.push('/login')
   } catch (error) {
-    // Tambahkan blok ini untuk memperbaiki parsing error
     console.error('Logout error:', error)
-    // Tetap hapus localstorage & pindah halaman jika server gagal merespon
     if (import.meta.client) {
       localStorage.removeItem('user_email')
     }
     router.push('/login')
   }
 }
-
-const items: NavigationMenuItem[] = [{
-  label: 'Home',
-  icon: 'i-lucide-house',
-  to: 'home',
-  active: false
-}, {
-  label: 'Database',
-  icon: 'i-lucide-database',
-  to: 'database',
-  active: false
-
-}]
 </script>
 
 <template>
@@ -85,7 +94,21 @@ const items: NavigationMenuItem[] = [{
 
     <UDashboardPanel>
       <template #header>
-        <UDashboardNavbar :title="pageTitle">
+        <UDashboardNavbar>
+          
+          <template #title>
+            <div class="flex items-center gap-2">
+              <UIcon 
+                :name="pageIcon" 
+                class="w-5 h-5 text-primary-500" 
+              />
+    
+              <span class="text-gray-900 dark:text-white font-semibold truncate">
+                {{ pageTitle }}
+              </span>
+            </div>
+      </template>
+
           <template #right>
             <UColorModeSwitch />
 

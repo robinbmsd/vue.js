@@ -2,7 +2,6 @@
 import * as z from 'zod'
 import type { FormSubmitEvent } from '#ui/types'
 
-// 1. Definisikan struktur respon dari Backend Python (Signup)
 interface RegisterResponse {
   success: boolean
   message: string
@@ -19,7 +18,6 @@ const state = reactive({
   password: ''
 })
 
-// PERBAIKAN: Skema Zod yang benar (z.string().email())
 const schema = z.object({
   email: z.string().email('Format email tidak valid'),
   password: z.string().min(8, 'Password minimal 8 karakter')
@@ -31,7 +29,6 @@ async function onSubmit(_event: FormSubmitEvent<Schema>) {
   formRef.value.clear()
 
   try {
-    // 2. Gunakan Interface <RegisterResponse> dan hapus ': any'
     const response = await $fetch<RegisterResponse>('http://localhost:6060/signup', {
       method: 'POST',
       body: state
@@ -46,7 +43,7 @@ async function onSubmit(_event: FormSubmitEvent<Schema>) {
       router.push('/login')
     }
   } catch (err: unknown) {
-    // 3. Tangani error tanpa 'any' dengan casting ke struktur data kita
+
     const errorData = (err as { data?: RegisterResponse }).data
 
     if (errorData && errorData.field) {
@@ -92,6 +89,7 @@ async function onSubmit(_event: FormSubmitEvent<Schema>) {
             v-model="state.email"
             icon="i-heroicons-envelope"
             placeholder="email@contoh.com"
+            class="w-full"
           />
         </UFormField>
 
@@ -104,6 +102,7 @@ async function onSubmit(_event: FormSubmitEvent<Schema>) {
             type="password"
             icon="i-heroicons-lock-closed"
             placeholder="Minimal 8 karakter"
+            class="w-full"
           />
         </UFormField>
 
